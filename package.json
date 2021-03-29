@@ -1,6 +1,6 @@
 {
-  "name": "membox5",
-  "version": "1.0.0",
+  "name": "membox-v6",
+  "version": "6.0.0",
   "description": "A fullstack javascript application",
   "main": "server.js",
   "scripts": {
@@ -13,14 +13,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/daveydee33/membox5.git"
+    "url": "git+https://github.com/daveydee33/membox-v6.git"
   },
   "author": "Dave Degeatano",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/daveydee33/membox5/issues"
+    "url": "https://github.com/daveydee33/membox-v6/issues"
   },
-  "homepage": "https://github.com/daveydee33/membox5#readme",
+  "homepage": "https://github.com/daveydee33/membox-v6#readme",
   "devDependencies": {
     "nodemon": "^2.0.2"
   },
