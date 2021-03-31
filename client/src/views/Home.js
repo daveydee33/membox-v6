@@ -11,9 +11,13 @@ import {
 import ItemContext from '../context/item-context'
 
 const Home = () => {
+  const { state, addItem, logState } = useContext(ItemContext)
+
+  useEffect(() => {
+    addItem(logState())
+  }, [])
+
   const [items, setItems] = useState()
-  const context = useContext(ItemContext)
-  console.log(`context`, context)
 
   useEffect(async () => {
     try {
@@ -21,6 +25,7 @@ const Home = () => {
       setItems(res.data)
     } catch (err) {
       console.error('Get Items error')
+      // throw new Error(err)
     }
   }, [])
 
