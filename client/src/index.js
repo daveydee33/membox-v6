@@ -38,14 +38,23 @@ import * as serviceWorker from './serviceWorker'
 // ** Lazy load app
 const LazyApp = lazy(() => import('./App'))
 
+// Context Provider
+import ItemContext from './context/item-context'
+
 ReactDOM.render(
   <Provider store={store}>
-    <Suspense fallback={<Spinner />}>
-      <ThemeContext>
-        <LazyApp />
-        <ToastContainer newestOnTop />
-      </ThemeContext>
-    </Suspense>
+    <ItemContext.Provider
+      value={{
+        data: `Some default context` // testing only
+      }}
+    >
+      <Suspense fallback={<Spinner />}>
+        <ThemeContext>
+          <LazyApp />
+          <ToastContainer newestOnTop />
+        </ThemeContext>
+      </Suspense>
+    </ItemContext.Provider>
   </Provider>,
   document.getElementById('root')
 )
