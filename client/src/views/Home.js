@@ -1,4 +1,3 @@
-import axios from 'axios'
 import { useEffect, useState, useContext } from 'react'
 import {
   Card,
@@ -11,29 +10,27 @@ import {
 import ItemContext from '../context/item-context'
 
 const Home = () => {
-  const { state, addItem, logState } = useContext(ItemContext)
+  const { state, fetchItems, addItem } = useContext(ItemContext)
+  const { items } = state
 
+  // fetch items on component load
   useEffect(() => {
-    addItem(logState())
+    fetchItems()
   }, [])
 
-  const [items, setItems] = useState()
+  // Add an item
+  useEffect(() => {
+    addItem()
+  }, [])
 
-  useEffect(async () => {
-    try {
-      const res = await axios.get('/api/items')
-      setItems(res.data)
-    } catch (err) {
-      console.error('Get Items error')
-      // throw new Error(err)
+  // display items on state change
+  useEffect(() => {
+    if (!items) return <h4>Loading...</h4>
+
+    if (items.length === 0) {
+      return <h4>Add some items to get started</h4>
     }
-  }, [])
-
-  if (!items) return <h4>Loading...</h4>
-
-  if (items.length === 0) {
-    return <h4>Add some items to get started</h4>
-  }
+  }, [state])
 
   return (
     <div>
